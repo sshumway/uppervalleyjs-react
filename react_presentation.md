@@ -11,7 +11,7 @@ theme: jdan/cleaver-retro
 
 # ReactJS
 ## UI Made Easy
-![React logo](./images/react-icon.png "React!")
+![React logo](images/react-icon.png "React!")
 
 --
 
@@ -20,7 +20,7 @@ theme: jdan/cleaver-retro
 A JavaScript library for building user interfaces
 
 
-Developed by ![Facebook logo](./images/fb_icon_325x325.png "Developed by Facebook")acebook
+Developed by ![Facebook logo](images/fb_icon_325x325.png "Developed by Facebook")acebook
 
 
 Open sourced in March 2015
@@ -33,10 +33,10 @@ Embraced by the community
 
 
 So many stars:
-![React github stars](./images/react_stars.png "So many stars")
+![React github stars](images/react_stars.png "So many stars")
 
 
-So many packages: ![React npm packages](./images/npm_react_packages.png "So many packages")
+So many packages: ![React npm packages](images/npm_react_packages.png "So many packages")
 
 
 --
