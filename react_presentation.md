@@ -11,7 +11,7 @@ theme: jdan/cleaver-retro
 
 # ReactJS
 ## UI Made Easy
-![React logo](images/react-icon.png "React!")
+![React logo](images/react-icon-lg.png "React!")
 
 --
 
