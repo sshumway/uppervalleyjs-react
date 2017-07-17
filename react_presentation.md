@@ -2,7 +2,7 @@ title: React
 author:
   name: Scott Shumway
   url: https://sshumway.github.io/uppervalleyjs-react/
-output: docs/index.html
+output: index.html
 controls: true
 style: style.css
 theme: jdan/cleaver-retro
