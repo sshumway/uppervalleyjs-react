@@ -54,20 +54,120 @@ So many packages: ![React npm packages](images/npm_react_packages.png "So many p
 
 ### Ok, so what does it do?
 
-
+The **V** in **MV\***
 
 --
 
 ### That sounds great, how does it do it?
 
+* Component tells react what you want to render
+* React renders it and updates it when state changes
+
+--
+
+### JSX
+
+Syntax extension to JavaScript
+
+```javascript
+const element = <img src={user.avatarUrl}></img>;
+
+function getGreeting(user) {
+  if (user) {
+    return <h1>Hello, {formatName(user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+```
+
+--
+
+### JSX
+
+Compiles to JavaScript
+
+```javascript
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+```
+
+--
+
+### Turns into
+
+
+```javascript 
+const element = {
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world'
+  }
+};
+```
+
+--
+
+### Virtual DOM
+
+![Virtual DOM](images/vdom_cycle.png "Virtual DOM")
+
+* Batch updates
+* Diff changes to minimize DOM updates
+
+--
+
+### Neat, so how do I do it?
+
+1. Create Components
+2. Compose Components
+3. Get a declarative, testable, understandable UI
+
 --
 
 ### What are components?
 
+* Building blocks of the UI
+* The nodes of the virtual DOM
+
+--
+
+### A simple component
 
 ```javascript
-var foo = true;
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
 ```
+
+used like so:
+
+```javascript
+const element = <Welcome name="Sara" />;
+```
+
+--
+
+### Props
+
+
+
+--
+
+* Stateful vs Stateless
+* State
+* Composing them
 
 --
 
@@ -79,6 +179,10 @@ var foo = true;
 --
 
 ### What about the data?
+
+--
+
+### Dev Tools
 
 --
 
