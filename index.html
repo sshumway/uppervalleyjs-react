@@ -545,8 +545,8 @@ img[alt="Virtual DOM"] {
   <div class="slide hidden " id="slide-11">
     <section class="slide-content"><h3 id="neat-so-how-do-i-do-it-">Neat, so how do I do it?</h3>
 <ol>
-<li>Create Components</li>
-<li>Compose Components</li>
+<li>Create components</li>
+<li>Compose components</li>
 <li>Get a declarative, testable, understandable UI</li>
 </ol>
 </section>
@@ -568,46 +568,109 @@ img[alt="Virtual DOM"] {
 }</code></pre>
 <p>used like so:</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Welcome</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Sara"</span> /&gt;</span>;</span></code></pre>
+<p>throw it on the page with</p>
+<pre><code class="lang-javascript">ReactDOM.render(
+  element,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);</code></pre>
 </section>
   </div>
   <div class="slide hidden " id="slide-14">
     <section class="slide-content"><h3 id="props">Props</h3>
+<ul>
+<li>Arbitrary inputs to component</li>
+<li>Passed into user-defined component as an object &quot;props&quot;</li>
+<li>Read-Only - a component must never modify its own props</li>
+<li>A components configuration</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Welcome</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {this.props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>;</span>
+  }
+}
+
+<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Welcome</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Sara"</span> /&gt;</span>;</span></code></pre>
 </section>
   </div>
   <div class="slide hidden " id="slide-15">
-    <section class="slide-content"><ul>
-<li>Stateful vs Stateless</li>
-<li>State</li>
-<li>Composing them</li>
+    <section class="slide-content"><h3 id="state">State</h3>
+<ul>
+<li>Private to the component</li>
+<li>Controlled by the component</li>
+<li>Mutates in time (mostly from user events)</li>
+<li>Change it with <code>setState</code></li>
 </ul>
 </section>
   </div>
   <div class="slide hidden " id="slide-16">
+    <section class="slide-content"><h3 id="using-state">Using State</h3>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {count: <span class="hljs-number">0</span>};
+    <span class="hljs-keyword">this</span>.incrementCounter = <span class="hljs-keyword">this</span>.updateCounter.bind(<span class="hljs-keyword">this</span>, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">this</span>.decrementCounter = <span class="hljs-keyword">this</span>.updateCounter.bind(<span class="hljs-keyword">this</span>, <span class="hljs-number">-1</span>);
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{this.state.count}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'button'</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'+'</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.incrementCounter}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'button'</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'-'</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.decrementCounter}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    )</span>;
+  }
+
+  updateCounter(count) {
+    <span class="hljs-keyword">this</span>.setState({count: <span class="hljs-keyword">this</span>.state.count + count});
+  }
+}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-17">
+    <section class="slide-content"><h3 id="stateless-components">Stateless Components</h3>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-18">
+    <section class="slide-content"><ul>
+<li>Composing them</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-19">
     <section class="slide-content"><h1 id="demo-time-">Demo time!</h1>
 <h2 id="i-sure-hope-this-works-">I sure hope this works...</h2>
 </section>
   </div>
-  <div class="slide hidden " id="slide-17">
+  <div class="slide hidden " id="slide-20">
     <section class="slide-content"><h3 id="what-about-the-data-">What about the data?</h3>
 </section>
   </div>
-  <div class="slide hidden " id="slide-18">
+  <div class="slide hidden " id="slide-21">
+    <section class="slide-content"></section>
+  </div>
+  <div class="slide hidden " id="slide-22">
+    <section class="slide-content"><h3 id="testing">Testing</h3>
+</section>
+  </div>
+  <div class="slide hidden " id="slide-23">
     <section class="slide-content"><h3 id="dev-tools">Dev Tools</h3>
 </section>
   </div>
-  <div class="slide hidden " id="slide-19">
+  <div class="slide hidden " id="slide-24">
     <section class="slide-content"><h3 id="beyond-the-page">Beyond the page</h3>
 </section>
   </div>
-  <div class="slide hidden " id="slide-20">
+  <div class="slide hidden " id="slide-25">
     <section class="slide-content"><h3 id="what-s-the-gotcha-">What&#39;s the gotcha?</h3>
 </section>
   </div>
-  <div class="slide hidden " id="slide-21">
+  <div class="slide hidden " id="slide-26">
     <section class="slide-content"><h3 id="more-info">More info</h3>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-22">
+  <div class="slide hidden author-slide" id="slide-27">
     <section class="slide-content"><div class="author">
   <h1 class="name">Scott Shumway</h1>
     <h3 class="url">

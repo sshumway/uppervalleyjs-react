@@ -128,8 +128,8 @@ const element = {
 
 ### Neat, so how do I do it?
 
-1. Create Components
-2. Compose Components
+1. Create components
+2. Compose components
 3. Get a declarative, testable, understandable UI
 
 --
@@ -157,16 +157,79 @@ used like so:
 const element = <Welcome name="Sara" />;
 ```
 
+throw it on the page with
+
+```javascript
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
 --
 
 ### Props
 
+* Arbitrary inputs to component
+* Passed into user-defined component as an object "props"
+* Read-Only - a component must never modify its own props
+* A components configuration
 
+```javascript
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+const element = <Welcome name="Sara" />;
+```
 
 --
 
-* Stateful vs Stateless
-* State
+### State
+
+* Private to the component
+* Controlled by the component
+* Mutates in time (mostly from user events)
+* Change it with `setState`
+
+--
+
+### Using State
+
+```javascript
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {count: 0};
+    this.incrementCounter = this.updateCounter.bind(this, 1);
+    this.decrementCounter = this.updateCounter.bind(this, -1);
+  }
+    
+  render() {
+    return (
+      <div>
+        <div>{this.state.count}</div>
+        <input type='button' value='+' onClick={this.incrementCounter} />
+        <input type='button' value='-' onClick={this.decrementCounter} />
+      </div>
+    );
+  }
+    
+  updateCounter(count) {
+    this.setState({count: this.state.count + count});
+  }
+}
+```
+
+--
+
+### Stateless Components
+
+
+
+--
 * Composing them
 
 --
@@ -179,6 +242,12 @@ const element = <Welcome name="Sara" />;
 --
 
 ### What about the data?
+
+--
+
+--
+
+### Testing
 
 --
 
