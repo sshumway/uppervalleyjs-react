@@ -165,7 +165,7 @@ class Welcome extends React.Component {
 used like so:
 
 ```javascript
-const element = <Welcome name="Sara" />;
+const element = <Welcome name="Meghan" />;
 ```
 
 throw it on the page with
