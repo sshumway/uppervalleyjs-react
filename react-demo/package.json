@@ -16,5 +16,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "firebase deploy"
+  },
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "jest-enzyme": "^3.6.1",
+    "react-test-renderer": "^15.6.1"
   }
 }
