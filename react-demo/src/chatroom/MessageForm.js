@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Warning from '../shared/Warning';
 
 class MessageForm extends Component {
 
@@ -15,28 +16,29 @@ class MessageForm extends Component {
       this.setState({ hasMessage: false });
     } else {
       this.setState({ hasMessage: true });
-      this.props.messageSubmitted(this.messageInput.value);
+      this.props.onSubmitMessage(this.messageInput.value);
       this.messageInput.value = '';
     }
   }
 
   render() {
-    <div className="column is-half is-offset-one-quarter">
-      Enter a handle.
-      <div className="field">
-        <label htmlFor="message" className="label">Message</label>
-        <div className="control">
-          <input type="text" className="input" placeholder="Message" name="message" ref={ el => this.messageInput = el } />
-          <div className="is-danger">
-            { this.state.hasMessage ? '' : 'Enter a message!' }
+    return (
+      <div>
+        <div className="field">
+          <label htmlFor="message" className="label">Message</label>
+          <div className="control">
+            <input type="text" className="input" placeholder="Message" name="message" ref={ el => this.messageInput = el } />
+            { this.state.hasMessage ? '' : <Warning warning='Enter a message!' /> }
+          </div>
+        </div>
+        <div className="field">
+          <div className="control">
+            <button type="button" className="button is-primary" onClick={this.onSubmit}>Submit</button>
           </div>
         </div>
       </div>
-      <div className="field">
-        <div className="control">
-          <button type="button" className="button is-primary" onClick={this.onUserMessageEntered}>Submit</button>
-        </div>
-      </div>
-    </div>
+    );
   }
 }
+
+export default MessageForm;

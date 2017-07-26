@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import UserList from './UserList';
 import MessageList from './MessageList';
-import fire from './fire';
+import MessageForm from './MessageForm';
+import fire from '../fire';
+import { Redirect } from 'react-router-dom';
 
 class Chatroom extends Component {
 
@@ -18,7 +20,7 @@ class Chatroom extends Component {
     let messagesRef = fire.database().ref('messages').orderByKey().limitToLast(100);
 
     messagesRef.on('child_added', snapshot => {
-      let message = { text: snapshot.val(), id: snapshot.key };
+      let message = { text: snapshot.val().message, id: snapshot.key, user: snapshot.val().user };
       this.setState({ messages: [message].concat(this.state.messages) });
     });
 
@@ -36,19 +38,23 @@ class Chatroom extends Component {
   }
 
   messageSubmitted(message) {
-    fire.database().ref('messages').push(message);
+    fire.database().ref('messages').push({ message, user: this.props.user });
   }
 
   render() {
     return (
       <div>
+        <div className="notification is-primary">
+          Hi {this.props.user}!
+        </div>
         <div className="columns">
           <div className="column is-one-quarter">
             <UserList users={this.state.users} />
           </div>
-          <div className="column">
+          <div className="column is-one-half">
             <MessageList messages={this.state.messages} />
           </div>
+          <div className="column is-one-quarter"></div>
         </div>
         <div className="columns">
           <div className="column is-half is-offset-one-quarter">
@@ -60,3 +66,5 @@ class Chatroom extends Component {
   }
 
 }
+
+export default Chatroom;
