@@ -9,6 +9,10 @@ class MessageForm extends Component {
     this.onSubmit = this.submitMessage.bind(this);
   }
 
+  componentDidMount() {
+    this.messageInput.focus();
+  }
+
   submitMessage(e) {
     e.preventDefault()
 

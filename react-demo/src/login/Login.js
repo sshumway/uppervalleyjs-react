@@ -12,6 +12,10 @@ class Login extends Component {
     this.onUserNameEntered = this.userNameEntered.bind(this);
   }
 
+  componentDidMount() {
+    this.inputEl.focus();
+  }
+
   userNameEntered(e) {
     if (this.inputEl.value) {
       this.props.onUserNameEntered(this.inputEl.value);
@@ -33,21 +37,23 @@ class Login extends Component {
     }
 
     return (
-      <div className="column is-half is-offset-one-quarter">
-        Enter a handle.
-        <div className="field">
-          <label htmlFor="user-name" className="label">Name</label>
-          <div className="control">
-            <input type="text" className="input" placeholder="Name" name="user-name" ref={(el) => this.inputEl = el } />
-            { this.state.hasUserName ? '' : <Warning warning='Name required' /> }
+      <form onSubmit={this.onUserNameEntered}>
+        <div className="column is-half is-offset-one-quarter">
+          Enter a handle.
+          <div className="field">
+            <label htmlFor="user-name" className="label">Name</label>
+            <div className="control">
+              <input type="text" className="input" placeholder="Name" name="user-name" ref={(el) => this.inputEl = el } />
+              { this.state.hasUserName ? '' : <Warning warning='Name required' /> }
+            </div>
+          </div>
+          <div className="field">
+            <div className="control">
+              <button type="submit" className="button is-primary">Submit</button>
+            </div>
           </div>
         </div>
-        <div className="field">
-          <div className="control">
-            <button type="button" className="button is-primary" onClick={this.onUserNameEntered}>Submit</button>
-          </div>
-        </div>
-      </div>
+      </form>
     );
   }
 };
