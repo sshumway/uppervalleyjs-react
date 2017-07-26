@@ -23,7 +23,7 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.onSubmit}>
         <div className="field">
           <label htmlFor="message" className="label">Message</label>
           <div className="control">
@@ -33,10 +33,10 @@ class MessageForm extends Component {
         </div>
         <div className="field">
           <div className="control">
-            <button type="button" className="button is-primary" onClick={this.onSubmit}>Submit</button>
+            <button type="submit" className="button is-primary">Submit</button>
           </div>
         </div>
-      </div>
+      </form>
     );
   }
 }

@@ -21,7 +21,7 @@ class Chatroom extends Component {
 
     messagesRef.on('child_added', snapshot => {
       let message = { text: snapshot.val().message, id: snapshot.key, user: snapshot.val().user };
-      this.setState({ messages: [message].concat(this.state.messages) });
+      this.setState({ messages: this.state.messages.concat([message]) });
     });
 
     let userRef = fire.database().ref('users').orderByKey();
@@ -32,16 +32,26 @@ class Chatroom extends Component {
     });
 
     userRef.on('child_removed', snapshot => {
-      let users = this.state.users.filter((user) => user.id != snapshot.key);
+      let users = this.state.users.filter((user) => user.id !== snapshot.key);
       this.setState({ users });
     });
   }
 
+  componentWillUnmount() {
+    fire.database().ref('messages').off();
+    fire.database().ref('users').off();
+  }
+
   messageSubmitted(message) {
-    fire.database().ref('messages').push({ message, user: this.props.user });
+    message && this.props.user && fire.database().ref('messages').push({ message, user: this.props.user });
   }
 
   render() {
+    if (!this.props.user) {
+      return (
+        <Redirect to="/" />
+      );
+    }
     return (
       <div>
         <div className="notification is-primary">
@@ -49,10 +59,15 @@ class Chatroom extends Component {
         </div>
         <div className="columns">
           <div className="column is-one-quarter">
-            <UserList users={this.state.users} />
+            <div className="box">
+              <p className="is-large">Users</p>
+              <UserList users={this.state.users} />
+            </div>
           </div>
           <div className="column is-one-half">
-            <MessageList messages={this.state.messages} />
+            <div className="box">
+              <MessageList messages={this.state.messages} />
+            </div>
           </div>
           <div className="column is-one-quarter"></div>
         </div>
@@ -64,7 +79,6 @@ class Chatroom extends Component {
       </div>
     );
   }
-
 }
 
 export default Chatroom;
