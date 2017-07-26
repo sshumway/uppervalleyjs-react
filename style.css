@@ -2,6 +2,19 @@
   color: #66D9EF;
 }
 
+.hljs-name, .hljs-tag {
+  color: #A6E22E;
+}
+
+.align-right {
+  float: right;
+}
+
+img {
+  border: 2px black solid;
+  border-radius: 10px;
+}
+
 img[alt="React logo"] {
   height: 300px;
   position: absolute;
@@ -10,20 +23,35 @@ img[alt="React logo"] {
   left: 0;
   right: 0;
   bottom: -40%;
+  border: none;
+  border-radius: 0;
 }
 
 img[alt="Facebook logo"] {
   height: 36px;
   vertical-align: text-top;
+  border: none;
+  border-radius: 0;
 }
 
 img[alt="React github stars"] {
   width: 100%;
-  border: 2px black solid;
 }
 
 img[alt="React npm packages"] {
   height: 100px;
-  border: 2px black solid;
   vertical-align: middle;
+}
+
+img[alt="Virtual DOM"] {
+  background-color: white;
+  width: 100%;
+}
+
+img[alt="React components"] {
+  height: 300px;
+}
+
+img[alt="React dev tools"] {
+  height: 100%;
 }
