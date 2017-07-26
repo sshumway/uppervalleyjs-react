@@ -251,10 +251,12 @@ const Username = ({ username }) =>
 
 --
 
-# Demo time!
+# [Demo time!](https://uppervalleyjs-react-demo-app.firebaseapp.com/)
 
 
 ## I sure hope this works...
+
+## [Source](https://github.com/sshumway/uppervalleyjs-react/tree/master)
 
 --
 
