@@ -55,7 +55,7 @@ class Chatroom extends Component {
     return (
       <div>
         <div className="notification is-primary">
-          Hi {this.props.user}!
+          Hi {this.props.user}! Welcome to the UpperValleyJS chat room.
         </div>
         <div className="columns">
           <div className="column is-one-quarter">
