@@ -10,6 +10,11 @@
   float: right;
 }
 
+img {
+  border: 2px black solid;
+  border-radius: 10px;
+}
+
 img[alt="React logo"] {
   height: 300px;
   position: absolute;
@@ -18,29 +23,35 @@ img[alt="React logo"] {
   left: 0;
   right: 0;
   bottom: -40%;
+  border: none;
+  border-radius: 0;
 }
 
 img[alt="Facebook logo"] {
   height: 36px;
   vertical-align: text-top;
+  border: none;
+  border-radius: 0;
 }
 
 img[alt="React github stars"] {
   width: 100%;
-  border: 2px black solid;
-  border-radius: 10px;
 }
 
 img[alt="React npm packages"] {
   height: 100px;
-  border: 2px black solid;
   vertical-align: middle;
-  border-radius: 10px;
 }
 
 img[alt="Virtual DOM"] {
   background-color: white;
-  border: 2px black solid;
-  border-radius: 10px;
   width: 100%;
+}
+
+img[alt="React components"] {
+  height: 300px;
+}
+
+img[alt="React dev tools"] {
+  height: 100%;
 }

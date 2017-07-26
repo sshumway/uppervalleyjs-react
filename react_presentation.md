@@ -1,6 +1,6 @@
 title: React
 author:
-  name: Scott Shumway
+  name: Thanks!
   url: https://sshumway.github.io/uppervalleyjs-react/
 output: index.html
 controls: true
@@ -54,14 +54,20 @@ So many packages: ![React npm packages](images/npm_react_packages.png "So many p
 
 ### Ok, so what does it do?
 
-The **V** in **MV\***
+<p></p>
+## The **V** in **MV\***
+
+* Separation of components instead of separation of concerns
+* Super fast DOM updates
+* Synthetic event system
+* One-way data binding
 
 --
 
 ### That sounds great, how does it do it?
 
-* Component tells react what you want to render
-* React renders it and updates it when state changes
+* Components tell react what you want to render
+* React renders them and updates them when state changes
 
 --
 
@@ -102,10 +108,11 @@ const element = React.createElement(
 
 --
 
-### Turns into
+### JSX
 
+Turns into
 
-```javascript 
+```javascript
 const element = {
   type: 'h1',
   props: {
@@ -130,7 +137,7 @@ const element = {
 
 1. Create components
 2. Compose components
-3. Get a declarative, testable, understandable UI
+3. Enjoy your declarative, testable, understandable UI
 
 --
 
@@ -138,6 +145,10 @@ const element = {
 
 * Building blocks of the UI
 * The nodes of the virtual DOM
+
+<p style="text-align: center;">
+![React components](images/react_components.png "Everything is a component")
+</p>
 
 --
 
@@ -175,15 +186,7 @@ ReactDOM.render(
 * Read-Only - a component must never modify its own props
 * A components configuration
 
-```javascript
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}</h1>;
-  }
-}
-
-const element = <Welcome name="Sara" />;
-```
+[Example](http://www.react.run/BymsYLHLb/8)
 
 --
 
@@ -198,39 +201,53 @@ const element = <Welcome name="Sara" />;
 
 ### Using State
 
+[Example](http://www.react.run/BymsYLHLb/6)
+
+--
+
+### Using State
+
+[A better example](http://www.react.run/BymsYLHLb/5)
+
+--
+
+### Functional, Stateless Components
+
+Props in, rendered UI out
+
 ```javascript
-class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {count: 0};
-    this.incrementCounter = this.updateCounter.bind(this, 1);
-    this.decrementCounter = this.updateCounter.bind(this, -1);
-  }
-    
-  render() {
-    return (
-      <div>
-        <div>{this.state.count}</div>
-        <input type='button' value='+' onClick={this.incrementCounter} />
-        <input type='button' value='-' onClick={this.decrementCounter} />
-      </div>
-    );
-  }
-    
-  updateCounter(count) {
-    this.setState({count: this.state.count + count});
-  }
-}
+const Username = ({ username }) =>
+  <p>
+    The logged in user is: {username}
+  </p>;
 ```
 
 --
 
-### Stateless Components
+### Composing Components
 
-
+<p style="text-align: center;">
+![React components](images/react_components.png "Everything is a component")
+</p>
 
 --
-* Composing them
+
+### Composing Components
+
+```javascript
+<CartComponent>
+  <CartListComponent>
+    <CartItemComponent>
+      <ProductComponent />
+      <ButtonComponent />
+    </CartItemComponent>
+  </CartListComponent>
+  <CartTotalComponent>
+    <PriceComponent />
+    <ButtonComponent />
+  </CartTotalComponent>
+</CartComponent>
+```
 
 --
 
@@ -243,24 +260,93 @@ class Counter extends React.Component {
 
 ### What about the data?
 
---
+React doesn't care
+
+
+Flux: pattern developed by Facebook
+* Your model is always the source of truth
 
 --
 
-### Testing
+### What is Flux?
+
+1. Your view triggers an event
+2. That event updates a model
+3. The model triggers an event
+4. The view responds to the model's event by re-rendering
+
+--
+
+### What else is there
+
+* Redux
+  - a popular flux implementation
+  - single store
+* Mobx
+ - make variables @observable
+
+--
+
+### Testing made easy
+
+Deterministic UI
+
+
+* Jest: snapshot testing
+* Enzyme: DOM testing
+
+--
+
+### An Enzyme Test
+
+```javascript
+test('CheckboxWithLabel changes the text after click', () => {
+  // Render a checkbox with label in the document
+  const checkbox = shallow(
+    <CheckboxWithLabel labelOn="On" labelOff="Off" />
+  );
+
+  expect(checkbox.text()).toEqual('Off');
+
+  checkbox.find('input').simulate('change');
+
+  expect(checkbox.text()).toEqual('On');
+});
+```
 
 --
 
 ### Dev Tools
 
+[React dev tools](https://github.com/facebook/react-devtools)
+
+![React dev tools](images/react_devtools-full.gif "react dev tools")
+
+--
+
+### Dev Tools
+
+Bootstrapping development
+
+NodeJS, npm/yarn, babel, webpack
+
+[Create React App](https://github.com/facebookincubator/create-react-app)
+
+[React Slingshot](https://github.com/coryhouse/react-slingshot)
+
 --
 
 ### Beyond the page
+* React Server
+  - Render pages on the server
+
+* React Native
+  * App written in JS using React
+  * Translated to native controls
 
 --
 
 ### What's the gotcha?
 
---
-
-### More info
+* Library size
+* Facebook patent clawback clause

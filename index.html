@@ -405,6 +405,11 @@ em {
   float: right;
 }
 
+img {
+  border: 2px black solid;
+  border-radius: 10px;
+}
+
 img[alt="React logo"] {
   height: 300px;
   position: absolute;
@@ -413,31 +418,37 @@ img[alt="React logo"] {
   left: 0;
   right: 0;
   bottom: -40%;
+  border: none;
+  border-radius: 0;
 }
 
 img[alt="Facebook logo"] {
   height: 36px;
   vertical-align: text-top;
+  border: none;
+  border-radius: 0;
 }
 
 img[alt="React github stars"] {
   width: 100%;
-  border: 2px black solid;
-  border-radius: 10px;
 }
 
 img[alt="React npm packages"] {
   height: 100px;
-  border: 2px black solid;
   vertical-align: middle;
-  border-radius: 10px;
 }
 
 img[alt="Virtual DOM"] {
   background-color: white;
-  border: 2px black solid;
-  border-radius: 10px;
   width: 100%;
+}
+
+img[alt="React components"] {
+  height: 300px;
+}
+
+img[alt="React dev tools"] {
+  height: 100%;
 }
 
   </style>
@@ -447,20 +458,20 @@ img[alt="Virtual DOM"] {
     <div class="progress-bar"></div>
   </div>
 
-  <div class="slide " id="slide-1">
+  <div class="slide" id="slide-1">
     <section class="slide-content"><h1 id="reactjs">ReactJS</h1>
 <h2 id="ui-made-easy">UI Made Easy</h2>
 <p><img src="images/react-icon-lg.png" alt="React logo" title="React!"></p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-2">
+  <div class="slide hidden" id="slide-2">
     <section class="slide-content"><h3 id="some-background">Some background</h3>
 <p>A JavaScript library for building user interfaces</p>
 <p>Developed by <img src="images/fb_icon_325x325.png" alt="Facebook logo" title="Developed by Facebook">acebook</p>
 <p>Open sourced in March 2015</p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-3">
+  <div class="slide hidden" id="slide-3">
     <section class="slide-content"><h3 id="since-then-">Since then...</h3>
 <p>Embraced by the community</p>
 <p>So many stars:
@@ -468,7 +479,7 @@ img[alt="Virtual DOM"] {
 <p>So many packages: <img src="images/npm_react_packages.png" alt="React npm packages" title="So many packages"></p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-4">
+  <div class="slide hidden" id="slide-4">
     <section class="slide-content"><h3 id="and-lots-of-companies">And lots of companies</h3>
 <ul>
 <li>Facebook (obviously)</li>
@@ -480,20 +491,27 @@ img[alt="Virtual DOM"] {
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-5">
+  <div class="slide hidden" id="slide-5">
     <section class="slide-content"><h3 id="ok-so-what-does-it-do-">Ok, so what does it do?</h3>
-<p>The <strong>V</strong> in <strong>MV*</strong></p>
-</section>
-  </div>
-  <div class="slide hidden " id="slide-6">
-    <section class="slide-content"><h3 id="that-sounds-great-how-does-it-do-it-">That sounds great, how does it do it?</h3>
+<p><p></p></p>
+<h2 id="the-v-in-mv-">The <strong>V</strong> in <strong>MV*</strong></h2>
 <ul>
-<li>Component tells react what you want to render</li>
-<li>React renders it and updates it when state changes</li>
+<li>Separation of components instead of separation of concerns</li>
+<li>Super fast DOM updates</li>
+<li>Synthetic event system</li>
+<li>One-way data binding</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-7">
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h3 id="that-sounds-great-how-does-it-do-it-">That sounds great, how does it do it?</h3>
+<ul>
+<li>Components tell react what you want to render</li>
+<li>React renders them and updates them when state changes</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
     <section class="slide-content"><h3 id="jsx">JSX</h3>
 <p>Syntax extension to JavaScript</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{user.avatarUrl}</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">img</span>&gt;</span>;</span>
@@ -506,7 +524,7 @@ img[alt="Virtual DOM"] {
 }</code></pre>
 </section>
   </div>
-  <div class="slide hidden " id="slide-8">
+  <div class="slide hidden" id="slide-8">
     <section class="slide-content"><h3 id="jsx">JSX</h3>
 <p>Compiles to JavaScript</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> element = (
@@ -522,8 +540,9 @@ img[alt="Virtual DOM"] {
 );</code></pre>
 </section>
   </div>
-  <div class="slide hidden " id="slide-9">
-    <section class="slide-content"><h3 id="turns-into">Turns into</h3>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h3 id="jsx">JSX</h3>
+<p>Turns into</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> element = {
   type: <span class="hljs-string">'h1'</span>,
   props: {
@@ -533,7 +552,7 @@ img[alt="Virtual DOM"] {
 };</code></pre>
 </section>
   </div>
-  <div class="slide hidden " id="slide-10">
+  <div class="slide hidden" id="slide-10">
     <section class="slide-content"><h3 id="virtual-dom">Virtual DOM</h3>
 <p><img src="images/vdom_cycle.png" alt="Virtual DOM" title="Virtual DOM"></p>
 <ul>
@@ -542,24 +561,26 @@ img[alt="Virtual DOM"] {
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-11">
+  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><h3 id="neat-so-how-do-i-do-it-">Neat, so how do I do it?</h3>
 <ol>
 <li>Create components</li>
 <li>Compose components</li>
-<li>Get a declarative, testable, understandable UI</li>
+<li>Enjoy your declarative, testable, understandable UI</li>
 </ol>
 </section>
   </div>
-  <div class="slide hidden " id="slide-12">
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><h3 id="what-are-components-">What are components?</h3>
 <ul>
 <li>Building blocks of the UI</li>
 <li>The nodes of the virtual DOM</li>
 </ul>
-</section>
+<p style="text-align: center;">
+<img src="images/react_components.png" alt="React components" title="Everything is a component">
+</p></section>
   </div>
-  <div class="slide hidden " id="slide-13">
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h3 id="a-simple-component">A simple component</h3>
 <pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Welcome</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   render() {
@@ -575,7 +596,7 @@ img[alt="Virtual DOM"] {
 );</code></pre>
 </section>
   </div>
-  <div class="slide hidden " id="slide-14">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h3 id="props">Props</h3>
 <ul>
 <li>Arbitrary inputs to component</li>
@@ -583,16 +604,10 @@ img[alt="Virtual DOM"] {
 <li>Read-Only - a component must never modify its own props</li>
 <li>A components configuration</li>
 </ul>
-<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Welcome</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {this.props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>;</span>
-  }
-}
-
-<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Welcome</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Sara"</span> /&gt;</span>;</span></code></pre>
+<p><a href="http://www.react.run/BymsYLHLb/8">Example</a></p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-15">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h3 id="state">State</h3>
 <ul>
 <li>Private to the component</li>
@@ -602,77 +617,153 @@ img[alt="Virtual DOM"] {
 </ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-16">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h3 id="using-state">Using State</h3>
-<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  <span class="hljs-keyword">constructor</span>(props) {
-    <span class="hljs-keyword">super</span>(props);
-    <span class="hljs-keyword">this</span>.state = {count: <span class="hljs-number">0</span>};
-    <span class="hljs-keyword">this</span>.incrementCounter = <span class="hljs-keyword">this</span>.updateCounter.bind(<span class="hljs-keyword">this</span>, <span class="hljs-number">1</span>);
-    <span class="hljs-keyword">this</span>.decrementCounter = <span class="hljs-keyword">this</span>.updateCounter.bind(<span class="hljs-keyword">this</span>, <span class="hljs-number">-1</span>);
-  }
-
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{this.state.count}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'button'</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'+'</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.incrementCounter}</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'button'</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'-'</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.decrementCounter}</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    )</span>;
-  }
-
-  updateCounter(count) {
-    <span class="hljs-keyword">this</span>.setState({count: <span class="hljs-keyword">this</span>.state.count + count});
-  }
-}</code></pre>
+<p><a href="http://www.react.run/BymsYLHLb/6">Example</a></p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-17">
-    <section class="slide-content"><h3 id="stateless-components">Stateless Components</h3>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h3 id="using-state">Using State</h3>
+<p><a href="http://www.react.run/BymsYLHLb/5">A better example</a></p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-18">
-    <section class="slide-content"><ul>
-<li>Composing them</li>
-</ul>
+  <div class="slide hidden" id="slide-18">
+    <section class="slide-content"><h3 id="functional-stateless-components">Functional, Stateless Components</h3>
+<p>Props in, rendered UI out</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> Username = ({ username }) =&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    The logged in user is: {username}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>;</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden " id="slide-19">
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><h3 id="composing-components">Composing Components</h3>
+<p style="text-align: center;">
+<img src="images/react_components.png" alt="React components" title="Everything is a component">
+</p></section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h3 id="composing-components">Composing Components</h3>
+<pre><code class="lang-javascript">&lt;CartComponent&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CartListComponent</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">CartItemComponent</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ProductComponent</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ButtonComponent</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">CartItemComponent</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">CartListComponent</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">CartTotalComponent</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">PriceComponent</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ButtonComponent</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">CartTotalComponent</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">CartComponent</span>&gt;</span></span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-21">
     <section class="slide-content"><h1 id="demo-time-">Demo time!</h1>
 <h2 id="i-sure-hope-this-works-">I sure hope this works...</h2>
 </section>
   </div>
-  <div class="slide hidden " id="slide-20">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h3 id="what-about-the-data-">What about the data?</h3>
+<p>React doesn&#39;t care</p>
+<p>Flux: pattern developed by Facebook</p>
+<ul>
+<li>Your model is always the source of truth</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-21">
-    <section class="slide-content"></section>
-  </div>
-  <div class="slide hidden " id="slide-22">
-    <section class="slide-content"><h3 id="testing">Testing</h3>
+  <div class="slide hidden" id="slide-23">
+    <section class="slide-content"><h3 id="what-is-flux-">What is Flux?</h3>
+<ol>
+<li>Your view triggers an event</li>
+<li>That event updates a model</li>
+<li>The model triggers an event</li>
+<li>The view responds to the model&#39;s event by re-rendering</li>
+</ol>
 </section>
   </div>
-  <div class="slide hidden " id="slide-23">
+  <div class="slide hidden" id="slide-24">
+    <section class="slide-content"><h3 id="what-else-is-there">What else is there</h3>
+<ul>
+<li>Redux<ul>
+<li>a popular flux implementation</li>
+<li>single store</li>
+</ul>
+</li>
+<li>Mobx<ul>
+<li>make variables @observable</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-25">
+    <section class="slide-content"><h3 id="testing-made-easy">Testing made easy</h3>
+<p>Deterministic UI</p>
+<ul>
+<li>Jest: snapshot testing</li>
+<li>Enzyme: DOM testing</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-26">
+    <section class="slide-content"><h3 id="an-enzyme-test">An Enzyme Test</h3>
+<pre><code class="lang-javascript">test(<span class="hljs-string">'CheckboxWithLabel changes the text after click'</span>, () =&gt; {
+  <span class="hljs-comment">// Render a checkbox with label in the document</span>
+  <span class="hljs-keyword">const</span> checkbox = shallow(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CheckboxWithLabel</span> <span class="hljs-attr">labelOn</span>=<span class="hljs-string">"On"</span> <span class="hljs-attr">labelOff</span>=<span class="hljs-string">"Off"</span> /&gt;</span>
+  )</span>;
+
+  expect(checkbox.text()).toEqual(<span class="hljs-string">'Off'</span>);
+
+  checkbox.find(<span class="hljs-string">'input'</span>).simulate(<span class="hljs-string">'change'</span>);
+
+  expect(checkbox.text()).toEqual(<span class="hljs-string">'On'</span>);
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-27">
     <section class="slide-content"><h3 id="dev-tools">Dev Tools</h3>
+<p><a href="https://github.com/facebook/react-devtools">React dev tools</a></p>
+<p><img src="images/react_devtools-full.gif" alt="React dev tools" title="react dev tools"></p>
 </section>
   </div>
-  <div class="slide hidden " id="slide-24">
+  <div class="slide hidden" id="slide-28">
+    <section class="slide-content"><h3 id="dev-tools">Dev Tools</h3>
+<p>Bootstrapping development</p>
+<p>NodeJS, npm/yarn, babel, webpack</p>
+<p><a href="https://github.com/facebookincubator/create-react-app">Create React App</a></p>
+<p><a href="https://github.com/coryhouse/react-slingshot">React Slingshot</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-29">
     <section class="slide-content"><h3 id="beyond-the-page">Beyond the page</h3>
+<ul>
+<li><p>React Server</p>
+<ul>
+<li>Render pages on the server</li>
+</ul>
+</li>
+<li><p>React Native</p>
+<ul>
+<li>App written in JS using React</li>
+<li>Translated to native controls</li>
+</ul>
+</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-25">
+  <div class="slide hidden" id="slide-30">
     <section class="slide-content"><h3 id="what-s-the-gotcha-">What&#39;s the gotcha?</h3>
+<ul>
+<li>Library size</li>
+<li>Facebook patent clawback clause</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden " id="slide-26">
-    <section class="slide-content"><h3 id="more-info">More info</h3>
-</section>
-  </div>
-  <div class="slide hidden author-slide" id="slide-27">
+  <div class="slide hidden author-slide" id="slide-31">
     <section class="slide-content"><div class="author">
-  <h1 class="name">Scott Shumway</h1>
+  <h1 class="name">Thanks!</h1>
     <h3 class="url">
       <a href="https://sshumway.github.io/uppervalleyjs-react/">https://sshumway.github.io/uppervalleyjs-react/</a>
     </h3>
