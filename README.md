@@ -5,7 +5,7 @@ To run locally:
 ```
 git clone https://github.com/sshumway/uppervalleyjs-react.git
 
-cd react-demo
+cd ./uppervalleyjs-react/react-demo
 
 yarn install
 
